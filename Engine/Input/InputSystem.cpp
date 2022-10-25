@@ -16,7 +16,12 @@ namespace neu
 	const uint32_t key_left = SDL_SCANCODE_LEFT;
 	const uint32_t key_right = SDL_SCANCODE_RIGHT;
 
-	void InputSystem::Initialize()
+	const uint32_t key_W = SDL_SCANCODE_W;
+	const uint32_t key_A = SDL_SCANCODE_A;
+	const uint32_t key_S = SDL_SCANCODE_S;
+	const uint32_t key_D = SDL_SCANCODE_D;
+
+		void InputSystem::Initialize()
 	{
 		int numKeys;
 		// get pointer to sdl keyboard states and number of keys
