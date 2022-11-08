@@ -18,6 +18,9 @@ namespace neu
 		bool Create(std::string filename, ...) override;
 		bool CreateFromSurface(SDL_Surface* surface, Renderer& renderer);
 		bool Load(const std::string& filename, Renderer& renderer);
+		
+		void SetActive(GLuint unit) { glActiveTexture(unit); }
+		
 		void Bind() { glBindTexture(m_target, m_texture); }
 		Vector2 GetSize() const;
 		friend class Renderer;
@@ -26,6 +29,5 @@ namespace neu
 	private:
 		GLuint m_texture = 0;
 		GLenum m_target = GL_TEXTURE_2D;
-		GLuint m_unit = GL_TEXTURE0;
 	};
 }
