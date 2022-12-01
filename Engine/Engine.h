@@ -2,6 +2,7 @@
 
 #include "Serialization/Json.h"
 #include "Renderer/Model.h" //has to be above memory because assimp uses its own memory
+#include "Renderer/GUI.h"
 
 #include "Core/Memory.h"
 #include "Core/File.h"
@@ -45,6 +46,8 @@
 #include "Renderer/Program.h"
 #include "Renderer/Material.h"
 #include "Renderer/VertexBuffer.h"
+#include "Renderer/CubemapTexture.h"
+#include "Renderer/FrameBuffer.h"
 
 #include "glm/glm.hpp"
 
@@ -63,6 +66,7 @@ namespace neu
 	extern ResourceManager g_resources;
 	extern PhysicsSystem g_physicsSystem;
 	extern EventManager g_eventManager;
+	extern GUI g_gui;
 	
 	class Engine : public Singleton<Engine>
 	{

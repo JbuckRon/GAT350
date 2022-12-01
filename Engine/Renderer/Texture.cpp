@@ -16,18 +16,55 @@ namespace neu
 		va_list args;
 		// va_start - enables access to variadic function arguments
 		va_start(args, filename);
-		// va_arg - accesses the next variadic function arguments
-		Renderer& renderer = va_arg(args, Renderer);
+		
 		// va_end - ends traversal of the variadic function arguments
 		va_end(args);
 		// create texture (returns true/false if successful)
-		return Load(filename, renderer);
+		return Load(filename);
 	}
 	bool Texture::CreateFromSurface(SDL_Surface* surface, Renderer& renderer)
 	{
 		return true;
 	}
-	bool Texture::Load(const std::string& filename, Renderer& renderer)
+	bool Texture::CreateTexture(int width, int height)
+	{
+		m_target = GL_TEXTURE_2D;
+		m_width = width;
+		m_height = height;
+
+		glGenTextures(1, &m_texture);
+		glBindTexture(m_target, m_texture);
+
+		// create texture (width, height)
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
+		glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP);
+		glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+		return true;
+	}
+	bool Texture::CreateDepthTexture(int width, int height)
+	{
+		m_target = GL_TEXTURE_2D;
+		m_width = width;
+		m_height = height;
+
+		glGenTextures(1, &m_texture);
+		glBindTexture(m_target, m_texture);
+
+		// create texture (width, height)
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+
+		glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP);
+		glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+		return true;
+	}
+	bool Texture::Load(const std::string& filename)
 	{
 		// load surface
 		// !! call IMG_Load with c-string of filename
@@ -37,7 +74,7 @@ namespace neu
 			LOG(SDL_GetError());
 			return false;
 		}
-		//FlipSurface(surface);
+		FlipSurface(surface);
 		
 		// create texture
 		glGenTextures(1, &m_texture);
@@ -53,9 +90,34 @@ namespace neu
 		SDL_FreeSurface(surface);
 		return true;
 	}
-	neu::Vector2 Texture::GetSize() const
+	glm::ivec2 Texture::GetSize() const
 	{
-		return Vector2{ 0, 0 };
+		return glm::ivec2{ m_width, m_height };
+	}
+	GLenum Texture::GetInternalFormat(GLuint format)
+	{
+		GLenum internalFormat = SDL_PIXELFORMAT_UNKNOWN;
+		switch (format)
+		{
+		case SDL_PIXELFORMAT_RGB888:
+		case SDL_PIXELFORMAT_RGB24:
+			internalFormat = GL_RGB;
+			break;
+		case SDL_PIXELFORMAT_BGR888:
+		case SDL_PIXELFORMAT_BGR24:
+			internalFormat = GL_BGR;
+			break;
+		case SDL_PIXELFORMAT_RGBA8888:
+		case SDL_PIXELFORMAT_RGBA32:
+			internalFormat = GL_RGBA;
+			break;
+		case SDL_PIXELFORMAT_BGRA8888:
+		case SDL_PIXELFORMAT_BGRA32:
+			internalFormat = GL_BGRA;
+			break;
+		}
+
+		return internalFormat;
 	}
 	void Texture::FlipSurface(SDL_Surface* surface)
 	{

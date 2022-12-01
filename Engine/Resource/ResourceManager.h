@@ -23,6 +23,9 @@ namespace neu
 		template <typename T>
 		std::vector<std::shared_ptr<T>> Get();
 
+		template <typename T>
+		void Add(const std::string& name, std::shared_ptr<T> resource);
+
 	private:
 		std::map<std::string, std::shared_ptr<Resource>> m_resources;
 	};
@@ -30,6 +33,7 @@ namespace neu
 	template<typename T, typename ... TArgs>
 	inline std::shared_ptr<T> ResourceManager::Get(const std::string& name, TArgs... args)
 	{
+		//here
 		if (m_resources.find(name) != m_resources.end())
 		{
 			// found
@@ -63,6 +67,14 @@ namespace neu
 		}
 
 		return result;
+	}
+
+	template<typename T>
+	inline void ResourceManager::Add(const std::string& name, std::shared_ptr<T> resource)
+	{
+		//here
+		//std::string lowerName = ToLower(name);
+		//m_resources[lowerName] = resource;
 	}
 }
 

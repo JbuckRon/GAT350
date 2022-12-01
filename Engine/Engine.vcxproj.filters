@@ -39,6 +39,12 @@
     <Filter Include="Source\Physics">
       <UniqueIdentifier>{7e2609ab-24c6-4ca5-884d-c8db90cfd74a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\External">
+      <UniqueIdentifier>{86386833-362a-4e20-bd9e-640a68b60886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\External\imgui">
+      <UniqueIdentifier>{0570c3a9-dc0a-4991-8798-b662b4cb22be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -175,6 +181,39 @@
     </ClCompile>
     <ClCompile Include="Components\LightComponent.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Utilities.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_draw.cpp">
+      <Filter>Source\External\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Source\External\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_tables.cpp">
+      <Filter>Source\External\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_widgets.cpp">
+      <Filter>Source\External\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui.cpp">
+      <Filter>Source\External\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_demo.cpp">
+      <Filter>Source\External\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\GUI.cpp">
+      <Filter>Source\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_impl_sdl.cpp">
+      <Filter>Source\External\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\CubemapTexture.cpp">
+      <Filter>Source\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\FrameBuffer.cpp">
+      <Filter>Source\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -351,6 +390,45 @@
     </ClInclude>
     <ClInclude Include="Components\LightComponent.h">
       <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Utilities.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui_impl_opengl3.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui_internal.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imstb_rectpack.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imstb_textedit.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imstb_truetype.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imconfig.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\GUI.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui_impl_sdl.h">
+      <Filter>Source\External\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\CubemapTexture.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\FrameBuffer.h">
+      <Filter>Source\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

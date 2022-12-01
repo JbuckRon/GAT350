@@ -5,7 +5,7 @@ namespace neu
 	bool Model::Create(std::string filename, ...)
 	{
 		Assimp::Importer importer;
-		const aiScene* scene = importer.ReadFile(filename, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+		const aiScene* scene = importer.ReadFile(filename, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_CalcTangentSpace);
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
 			LOG("error loading assimp file %s", importer.GetErrorString());
@@ -38,6 +38,14 @@ namespace neu
 			vertex.position = { mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z };
 			vertex.normal = { mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z };
 			vertex.tangent = { mesh->mTangents[i].x, mesh->mTangents[i].y, mesh->mTangents[i].z };
+			if (mesh->mTangents)
+			{
+				vertex.tangent = { mesh->mTangents[i].x, mesh->mTangents[i].y, mesh->mTangents[i].z };
+			}
+			else
+			{
+				vertex.tangent = { 0, 0, 0 };
+			}
 			if (mesh->mTextureCoords[0])
 			{
 				vertex.texcoord = { mesh->mTextureCoords[0][i].x, mesh -> mTextureCoords[0][i].y };

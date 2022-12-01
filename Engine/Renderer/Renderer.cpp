@@ -25,12 +25,14 @@ namespace neu
 		IMG_Quit();
 	}
 
-	void Renderer::CreateWindow(const char* name, int width, int height, bool fullscreen)
+	void Renderer::CreateWindow(const std::string& name, int width, int height, bool fullscreen)
 	{
-		m_width = width;
-		m_height = height;
+		this->width = width;
+		this->height = height;
+		this->fullscreen = fullscreen;
+
 		int flags = (fullscreen) ? SDL_WINDOW_FULLSCREEN : (SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-		m_window = SDL_CreateWindow(name, 100, 100, width, height, SDL_WINDOW_OPENGL | flags);
+		m_window = SDL_CreateWindow(name.c_str(), 100, 100, width, height, SDL_WINDOW_OPENGL | flags);
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
@@ -51,8 +53,9 @@ namespace neu
 
 	void Renderer::BeginFrame()
 	{
-		glClearColor(0.53f, 0.81f, 0.98f, 1);
+		glClearColor(clear_color.r, clear_color.g, clear_color.b, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	}
 
 	void Renderer::EndFrame()
@@ -148,6 +151,16 @@ namespace neu
 
 		SDL_RendererFlip flip = (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;*/
 		//SDL_RenderCopyEx(m_renderer, texture->m_texture, &src, &dest, math::RadToDeg(mx.GetRotation()), &center, flip);
+	}
+
+	void Renderer::SetViewport(int x, int y, int width, int height)
+	{
+		glViewport(x, y, width, height);
+	}
+
+	void Renderer::RestoreViewport()
+	{
+		glViewport(0, 0, width, height);
 	}
 
 }
