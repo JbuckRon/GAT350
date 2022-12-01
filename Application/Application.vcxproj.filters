@@ -188,5 +188,8 @@
     <None Include="..\Build\Assets\Materials\rtt.mtrl">
       <Filter>Resource Files\Assets\Materials</Filter>
     </None>
+    <None Include="..\Build\Assets\Materials\postprocess.mtrl">
+      <Filter>Resource Files\Assets\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

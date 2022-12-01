@@ -1,12 +1,12 @@
 #version 430 core
 
-in vec3 refraction_dir;
+in vec3 refract_dir;
 
 out vec4 fcolor;
 
-uniform samplerCube cubeMap;
+uniform samplerCube Cubemap;
 
 void main()
 {
-	fcolor = texture(cubeMap, refraction_dir);
+	fcolor = texture(Cubemap, refract_dir);
 }

@@ -4,9 +4,9 @@ in vec3 texcoord;
 
 out vec4 fcolor;
 
-uniform samplerCube cubeMap;
+uniform samplerCube Cubemap;
 
 void main()
 {
-	fcolor = texture(cubeMap, texcoord);
+	fcolor = texture(Cubemap, texcoord);
 }

@@ -1,5 +1,5 @@
 {
-  "program": "shaders/unlit/texture.prog",
+  "program": "shaders/postprocess/postprocess.prog",
   "textures": [
     "fb_texture"
   ],

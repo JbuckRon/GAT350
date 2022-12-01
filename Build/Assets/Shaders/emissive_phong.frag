@@ -17,12 +17,16 @@ struct Light
  {
 	vec3 color;
 	float shininess;
+	vec2 uv_tiling;
+	vec2 uv_offset;
 };
 
 uniform Light light;
 uniform Material material;
  
-uniform sampler2D textureSampler;
+layout (binding = 0) uniform sampler2D diffuseMap;
+layout (binding = 1) uniform sampler2D specularMap;
+layout (binding = 2) uniform sampler2D emissiveMap;
  
 void main()
 {
@@ -49,8 +53,10 @@ void main()
 		specular = light.color * material.color * intensity;
 	}
 
-	//color = vec3(0.2) + diffuse + specular;
+	vec2 ttexcoord = (texcoord * material.uv_tiling) + material.uv_offset;
 
+	//vec4 texture_color = mix(texture(texture1, ttexcoord), texture(texture2, ttexcoord), 0.5);
+	vec4 texture_color = texture(diffuseMap, ttexcoord);
 
-	fcolor = vec4(ambient + diffuse, 1) * texture(textureSampler, texcoord) + vec4(specular, 1);
+	fcolor = texture(emissiveMap, ttexcoord) + (vec4(ambient + diffuse, 1)) * texture_color + (vec4(specular, 1) * texture(specularMap, ttexcoord));
 }

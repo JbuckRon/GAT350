@@ -2,7 +2,6 @@
 
 in layout(location = 0) vec3 vposition;
 
-
 out vec3 color;
 
 uniform struct Material

@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include <iostream>
+#define POST_PROCESS
 
 
 float vertices[] = {
@@ -61,7 +62,6 @@ int main(int argc, char** argv)
 
 	neu::g_renderer.CreateWindow("Neumont", 800, 600);
 	LOG("Window Initialized...");
-
 	neu::g_gui.Initialize(neu::g_renderer);
 
 	//create frame buffer texture
@@ -88,32 +88,12 @@ int main(int argc, char** argv)
 		scene->Initialize();
 	}
 
-	
-	// 1 0 0 0
-	// 0 1 0 0
-	// 0 0 1 0
-	// 0 0 0 1
 
-	glm::mat4 model{ 1 };
-	glm::mat4 projection = glm::perspective(45.0f, neu::g_renderer.GetWidth() / (float)neu::g_renderer.GetHeight(), 0.01f, 100.0f);
-	//mx = glm::scale(glm::vec3{ 0.5, 0.5, 0.5 });
-
-
-
-	glm::vec3 cameraPosition{ 0, 2, 2 };
-
-
-
-	//create material
-	std::shared_ptr<neu::Material> material = neu::g_resources.Get<neu::Material>("Materials/ogre.mtrl");
-	material->Bind();
 	
 	float x = 0;
 	glm::vec3 rot { 0 , 0 , 0 };
-
-	float ri = 1;
+	float ri = 1.3f;
 	float interp = 0.85f;
-
 	bool quit = false;
 	while (!quit)
 	{
@@ -134,52 +114,67 @@ int main(int argc, char** argv)
 		// move light using sin wave
 			//actor->m_transform.position = pos;
 		}
-		
-
-		auto material = neu::g_resources.Get<neu::Material>("Materials/multi.mtrl");
-		if (material)
-		{
-			material->uv_offset += glm::vec2(neu::g_time.deltaTime);
-		}
 
 		auto program = neu::g_resources.Get<neu::Program>("shaders/fx/refraction.prog");
 		if (program)
 		{
 			program->Use();
 			program->SetUniform("ri", ri);
+			program->SetUniform("interp", interp);
 		}
+		
 
 		ImGui::Begin("Transform");
 		ImGui::DragFloat3("Rotation", &rot[0]);
-		ImGui::DragFloat3("Refraction Index", &ri, 0.01f, 1, 3);
+		ImGui::DragFloat("Refraction Index", &ri, 0.01f, 1, 3);
+		ImGui::DragFloat("interp", &interp, 0.01f, 1, 1);
 		ImGui::End();
 
 		scene->Update();
 
+		#ifdef POST_PROCESS
+
+		// don't draw post process actor when rendering to the framebuffer
+		{
+			auto actor = scene->GetActorFromName("PostProcess");
+			if (actor)
+			{
+				actor->SetActive(false);
+			}
+		}
+
+
 		// render pass 1 (render to framebuffer)
 		neu::g_renderer.SetViewport(0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y);
 		framebuffer->Bind();
+		neu::g_renderer.BeginFrame();
+		scene->PreRender(neu::g_renderer);
+		scene->Render(neu::g_renderer);
+		framebuffer->Unbind();
+
 
 		// render pass 2 (render to screen)
 		neu::g_renderer.RestoreViewport();
-
 		neu::g_renderer.BeginFrame();
+		scene->PreRender(neu::g_renderer);
 
+		
+		// draw only the post process actor to the screen
+		{
+			auto actor = scene->GetActorFromName("PostProcess");
+			if (actor)
+			{
+				actor->SetActive(true);
+				actor->Draw(neu::g_renderer);
+			}
+		}
+#else
+		neu::g_renderer.BeginFrame();
 		scene->PreRender(neu::g_renderer);
 		scene->Render(neu::g_renderer);
+#endif // POST_PROCESS
 
 		neu::g_gui.Draw();
-		//m->m_vertexBuffer.Draw();
-		/*for (size_t i = 0; i < 4; i++)
-		{
-			transforms[i].rotation += glm::vec3(0, 90 * neu::g_time.deltaTime, 0);
-		}*/
-			/*glm::mat4 mvp = projection * view;
-			material->GetProgram()->SetUniform("mvp", mvp);*/
-			//vb->Draw();
-
-		//glDrawArrays(GL_TRIANGLES, 0, 36);
-
 		neu::g_renderer.EndFrame();
 		neu::g_gui.EndFrame();
 	}

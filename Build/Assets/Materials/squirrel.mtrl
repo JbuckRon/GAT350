@@ -1,8 +1,8 @@
 {
   "program": "shaders/lit/texture_normal.prog",
   "textures": [
-    "Textures/ogre_diffuse.bmp",
-    "Textures/ogre_normal.bmp"
+    "Textures/squirrel_diffuse.png",
+    "Textures/squirrel_normal.png"
   ],
   "color": [
     1,

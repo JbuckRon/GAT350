@@ -1,8 +1,9 @@
 {
   "program": "Shaders/texture_phong.prog",
   "textures": [
-    "Textures/ogre_diffuse.bmp",
-    "Textures/ogre_normal.bmp"
+    "textures/lava-diffuse.png",
+    "textures/lava-specular.png",
+    "textures/lava-emissive.png"
   ],
   "uv_tiling": [ 1, 1 ],
   "uv_offset": [ 0, 0 ],
@@ -11,5 +12,5 @@
     1,
     1
   ],
-  "shininess": 216
+  "shininess": 16
 }
