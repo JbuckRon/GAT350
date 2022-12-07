@@ -1,13 +1,13 @@
 {
-  "program": "shaders/lit/texture_normal.prog",
+  "program": "shaders/lit/texture.prog",
   "textures": [
     "Textures/ogre_diffuse.bmp",
     "Textures/ogre_normal.bmp"
   ],
   "color": [
-    1,
-    1,
-    1
+    0,
+    0,
+    0
   ],
-  "shininess": 32
+  "shininess": 35
 }

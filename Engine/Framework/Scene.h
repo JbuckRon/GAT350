@@ -10,7 +10,7 @@ namespace neu
 	class Renderer;
 	class Game;
 
-	class Scene : public GameObject, public ISerializable
+	class Scene : public GameObject, public ISerializable, public Resource
 	{
 	public:
 		Scene() = default;
@@ -19,6 +19,8 @@ namespace neu
 		~Scene() = default;
 
 		CLASS_DECLARATION(Scene)
+
+		virtual bool Create(std::string filename, ...) override;
 
 		void Initialize() override;
 		void Update() override;
@@ -42,6 +44,7 @@ namespace neu
 		std::vector<T*> GetActorsFromTag(const std::string& tag);
 
 		Game* GetGame() { return m_game; }
+
 
 	private:
 		Game* m_game =nullptr;

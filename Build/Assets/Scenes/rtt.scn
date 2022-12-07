@@ -39,7 +39,7 @@
 				"position": [
 					0,
 					0,
-					0
+					-4
 				],
 				"scale": [
 					1,
@@ -65,9 +65,9 @@
 			"name": "Light",
 			"transform": {
 				"position": [
-					2,
 					0,
-					2
+					0,
+					-4
 				],
 				"rotation": [
 					85,

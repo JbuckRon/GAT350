@@ -1,6 +1,6 @@
 {
   "program": "shaders/fx/skybox.prog",
-  "cubemap": "textures/FishermansBastion/",
+  "cubemap": "textures/HeartInTheSand/",
   "cubemap_extension":  ".jpg",
   "color": [
     1,

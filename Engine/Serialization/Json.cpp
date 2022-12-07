@@ -241,17 +241,89 @@ namespace neu::json
 
 	bool Get(const rapidjson::Value& value, const std::string& name, glm::vec2& data)
 	{
-		return false;
+		// check if 'name' member exists
+		if (!value.HasMember(name.c_str())) return false;
+
+		// check if an array with 2 elements
+		if (value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 2)
+		{
+			LOG("error reading json data %s", name.c_str());
+			return false;
+		}
+
+		// get json array object
+		auto& array = value[name.c_str()];
+		// get array values
+		for (rapidjson::SizeType i = 0; i < array.Size(); i++)
+		{
+			if (!array[i].IsNumber())
+			{
+				LOG("error reading json data %s", name.c_str());
+				return false;
+			}
+
+			data[i] = array[i].GetFloat();
+		}
+
+		return true;
 	}
 
 	bool Get(const rapidjson::Value& value, const std::string& name, glm::vec3& data)
 	{
-		return false;
+		// check if 'name' member exists
+		if (!value.HasMember(name.c_str())) return false;
+
+		// check if an array with 3 elements
+		if (value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 3)
+		{
+			LOG("error reading json data %s", name.c_str());
+			return false;
+		}
+
+		// get json array object
+		auto& array = value[name.c_str()];
+		// get array values
+		for (rapidjson::SizeType i = 0; i < array.Size(); i++)
+		{
+			if (!array[i].IsNumber())
+			{
+				LOG("error reading json data %s", name.c_str());
+				return false;
+			}
+
+			data[i] = array[i].GetFloat();
+		}
+
+		return true;
 	}
 
 	bool Get(const rapidjson::Value& value, const std::string& name, glm::vec4& data)
 	{
-		return false;
+		// check if 'name' member exists
+		if (!value.HasMember(name.c_str())) return false;
+
+		// check if an array with 4 elements
+		if (value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4)
+		{
+			LOG("error reading json data %s", name.c_str());
+			return false;
+		}
+
+		// get json array object
+		auto& array = value[name.c_str()];
+		// get array values
+		for (rapidjson::SizeType i = 0; i < array.Size(); i++)
+		{
+			if (!array[i].IsNumber())
+			{
+				LOG("error reading json data %s", name.c_str());
+				return false;
+			}
+
+			data[i] = array[i].GetFloat();
+		}
+
+		return true;
 	}
 
 }

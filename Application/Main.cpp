@@ -75,7 +75,7 @@ int main(int argc, char** argv)
 
 
 	//make scene
-	auto scene = std::make_unique<neu::Scene>();
+	/*auto scene = std::make_unique<neu::Scene>();
 	rapidjson::Document document;
 	bool success = neu::json::Load("Scenes/rtt.scn", document);
 	if (!success)
@@ -86,8 +86,10 @@ int main(int argc, char** argv)
 	{
 		scene->Read(document);
 		scene->Initialize();
-	}
+	}*/
 
+	//load scene
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/rtt.scn");
 
 	
 	float x = 0;
@@ -120,7 +122,7 @@ int main(int argc, char** argv)
 		{
 			program->Use();
 			program->SetUniform("ri", ri);
-			program->SetUniform("interp", interp);
+			//program->SetUniform("interp", interp);
 		}
 		
 
@@ -145,17 +147,17 @@ int main(int argc, char** argv)
 
 
 		// render pass 1 (render to framebuffer)
-		neu::g_renderer.SetViewport(0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y);
-		framebuffer->Bind();
+		//neu::g_renderer.SetViewport(0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y);
+		//framebuffer->Bind();
 		neu::g_renderer.BeginFrame();
 		scene->PreRender(neu::g_renderer);
 		scene->Render(neu::g_renderer);
-		framebuffer->Unbind();
+		//framebuffer->Unbind();
 
 
 		// render pass 2 (render to screen)
 		neu::g_renderer.RestoreViewport();
-		neu::g_renderer.BeginFrame();
+		//neu::g_renderer.BeginFrame();
 		scene->PreRender(neu::g_renderer);
 
 		

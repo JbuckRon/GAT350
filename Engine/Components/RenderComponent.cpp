@@ -1,9 +1,9 @@
 #include "RenderComponent.h"
 
-
+//here
 namespace neu
 {
-    bool RenderComponent::Write(const rapidjson::Value& value) const
+    /*bool RenderComponent::Write(const rapidjson::Value& value) const
     {
         return true;
     }
@@ -13,7 +13,7 @@ namespace neu
         READ_DATA(value, sort_order);
 
         return true;
-    }
+    }*/
 
 }
 

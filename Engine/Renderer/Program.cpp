@@ -152,8 +152,11 @@ namespace neu
 			GLint location = glGetUniformLocation(m_program, name.c_str());
 			if (location == -1)
 			{
-
 				LOG("Could not find uniform location: %s", name.c_str());
+			}
+			else
+			{
+				LOG("Uniform location: %s - %d", name.c_str(), location);
 			}
 			m_uniforms[name] = location;
 		}

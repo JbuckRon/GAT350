@@ -1,6 +1,6 @@
 {
   "program": "shaders/fx/refraction.prog",
-  "cubemap": "textures/GamlaStan/",
+  "cubemap": "textures/HeartInTheSand/",
   "cubemap_extension":  ".jpg",
   "color": [
     1,

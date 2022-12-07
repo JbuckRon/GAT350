@@ -4,6 +4,19 @@
 
 namespace neu
 {
+	bool Scene::Create(std::string filename, ...)
+	{
+		rapidjson::Document document;
+		bool success = neu::json::Load(filename, document);
+		if (!success)
+		{
+			LOG("error loading svcene file %s", filename);
+			return false;
+		}
+		Read(document);
+		Initialize();
+		return true;
+	}
 	void Scene::Initialize()
 	{
 		for (auto& actor : m_actors) { actor->Initialize(); }

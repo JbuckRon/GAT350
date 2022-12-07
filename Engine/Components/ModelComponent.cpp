@@ -10,6 +10,8 @@ namespace neu
 		material->Bind();
 		// set the model matrix (transform to world space)
 		material->GetProgram()->SetUniform("model", (glm::mat4)m_owner->m_transform);
+
+		glDepthMask(depth_test);
 		model->m_vertexBuffer.Draw();
 	}
 	bool ModelComponent::Write(const rapidjson::Value& value) const
@@ -18,6 +20,8 @@ namespace neu
 	}
 	bool ModelComponent::Read(const rapidjson::Value& value)
 	{
+		READ_DATA(value, depth_test);
+
 		// read model name
 		std::string model_name;
 		READ_DATA(value, model_name);

@@ -195,6 +195,7 @@
     <ClCompile Include="Components\PhysicsComponent.cpp" />
     <ClCompile Include="Components\PlayerComponent.cpp" />
     <ClCompile Include="Components\RBPhysicsComponent.cpp" />
+    <ClCompile Include="Components\RenderComponent.cpp" />
     <ClCompile Include="Components\SpriteAnimComponent.cpp" />
     <ClCompile Include="Components\SpriteComponent.cpp" />
     <ClCompile Include="Components\TextComponent.cpp" />

@@ -215,6 +215,9 @@
     <ClCompile Include="Renderer\FrameBuffer.cpp">
       <Filter>Source\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Components\RenderComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathUtils.h">
