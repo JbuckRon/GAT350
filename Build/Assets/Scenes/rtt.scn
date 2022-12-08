@@ -34,7 +34,7 @@
 		},
 		{
 			"type": "Actor",
-			"name": "Ogre",
+			"name": "HouseMain",
 			"transform": {
 				"position": [
 					0,
@@ -49,14 +49,126 @@
 				"rotation": [
 					0,
 					0,
-					180
+					0
 				]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"model_name": "Models/ogre.obj",
-					"material_name": "Materials/ogre.mtrl"
+					"model_name": "Models/WinterCabin.glb",
+					"material_name": "Materials/WinterCabin.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "HouseParts",
+			"transform": {
+				"position": [
+					0,
+					0,
+					-4
+				],
+				"scale": [
+					1,
+					1,
+					1
+				],
+				"rotation": [
+					0,
+					0,
+					0
+				]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"model_name": "Models/ReflectiveWinterCabin.glb",
+					"material_name": "Materials/ReflectiveWinterCabin.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Reindeer",
+			"transform": {
+				"position": [
+					-26,
+					0,
+					53
+				],
+				"scale": [
+					2,
+					2,
+					2
+				],
+				"rotation": [
+					0,
+					170,
+					0
+				]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"model_name": "Models/Reindeer.glb",
+					"material_name": "Materials/Reindeer.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "UFO",
+			"transform": {
+				"position": [
+					-26,
+					45,
+					53
+				],
+				"scale": [
+					0.5,
+					0.5,
+					0.5
+				],
+				"rotation": [
+					0,
+					0,
+					0
+				]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"model_name": "Models/UFO.glb",
+					"material_name": "Materials/UFO.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "SnowPlane",
+			"transform": {
+				"position": [
+					0,
+					-1,
+					0
+				],
+				"scale": [
+					200,
+					200,
+					200
+				],
+				"rotation": [
+					0,
+					0,
+					0
+				]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"model_name": "Models/Plane.obj",
+					"material_name": "Materials/SnowPlane.mtrl"
 				}
 			]
 		},

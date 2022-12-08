@@ -1,0 +1,14 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "Textures/UFOTexture.png",
+    "Textures/UFOTexture_Normal.png",
+    "Textures/UFOTexture_Specular.png"
+  ],
+  "color": [
+    0,
+    0,
+    0
+  ],
+  "shininess": 35
+}

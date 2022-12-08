@@ -1,0 +1,14 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "Textures/WinterCabinTexture.png",
+    "Textures/WinterCabinTexture_Normal.png",
+    "Textures/WinterCabinTexture_Specular.png"
+  ],
+  "color": [
+    0,
+    0,
+    0
+  ],
+  "shininess": 35
+}

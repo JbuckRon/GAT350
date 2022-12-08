@@ -94,6 +94,10 @@ int main(int argc, char** argv)
 	
 	float x = 0;
 	glm::vec3 rot { 0 , 0 , 0 };
+	float posx = 0;
+	float posy = 0;
+	float posz = 0;
+	
 	float ri = 1.3f;
 	float interp = 0.85f;
 	bool quit = false;
@@ -103,12 +107,20 @@ int main(int argc, char** argv)
 		neu::g_gui.BeginFrame(neu::g_renderer);
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
 
-		auto actor = scene->GetActorFromName("Ogre");
+		auto actor = scene->GetActorFromName("House");
 		if (actor)
 		{
 			actor->m_transform.rotation = math::EulerToQuaternion(rot);
 		}
 
+		actor = scene->GetActorFromName("UO");
+		if (actor)
+		{
+			actor->m_transform.rotation = math::EulerToQuaternion(rot);
+			actor->m_transform.position.x = posx;
+			actor->m_transform.position.y = posy;
+			actor->m_transform.position.z = posz;
+		}
 
 		actor = scene->GetActorFromName("Light");
 		if (actor)
@@ -128,6 +140,9 @@ int main(int argc, char** argv)
 
 		ImGui::Begin("Transform");
 		ImGui::DragFloat3("Rotation", &rot[0]);
+		ImGui::DragFloat("X-Position", &posx);
+		ImGui::DragFloat("y-Position", &posy);
+		ImGui::DragFloat("z-Position", &posz);
 		ImGui::DragFloat("Refraction Index", &ri, 0.01f, 1, 3);
 		ImGui::DragFloat("interp", &interp, 0.01f, 1, 1);
 		ImGui::End();

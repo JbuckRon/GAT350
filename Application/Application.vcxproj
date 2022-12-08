@@ -160,9 +160,14 @@
     <None Include="..\Build\Assets\Materials\ogre.mtrl" />
     <None Include="..\Build\Assets\Materials\postprocess.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection.mtrl" />
+    <None Include="..\Build\Assets\Materials\ReflectiveWinterCabin.mtrl" />
     <None Include="..\Build\Assets\Materials\refraction.mtrl" />
+    <None Include="..\Build\Assets\Materials\Reindeer.mtrl" />
     <None Include="..\Build\Assets\Materials\rtt.mtrl" />
     <None Include="..\Build\Assets\Materials\skybox.mtrl" />
+    <None Include="..\Build\Assets\Materials\SnowPlane.mtrl" />
+    <None Include="..\Build\Assets\Materials\UFO.mtrl" />
+    <None Include="..\Build\Assets\Materials\WinterCabin.mtrl" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Scenes\cubemap.scn" />
