@@ -12,6 +12,7 @@ namespace neu
 		virtual bool Read(const rapidjson::Value& value) override;
 	public:
 		float speed = 0;
+		float sensitivity = 5;
 
 	private:
 		float m_yaw = 0; //left right

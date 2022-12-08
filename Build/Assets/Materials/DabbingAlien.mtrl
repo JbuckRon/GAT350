@@ -1,0 +1,14 @@
+{
+  "program": "shaders/fx/reflection.prog",
+  "textures": [
+    "Textures/DabbingAlienTexture.png",
+    "Textures/DabbingAlienTexture_Normal.png",
+    "Textures/DabbingAlienTexture_Specular.png"
+  ],
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 100
+}

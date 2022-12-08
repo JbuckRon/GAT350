@@ -146,6 +146,34 @@
 		},
 		{
 			"type": "Actor",
+			"name": "Alien",
+			"transform": {
+				"position": [
+					-18,
+					0,
+					45
+				],
+				"scale": [
+					0.1,
+					0.1,
+					0.1
+				],
+				"rotation": [
+					0,
+					0,
+					0
+				]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"model_name": "Models/DabbingAlien.glb",
+					"material_name": "Materials/DabbingAlien.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
 			"name": "SnowPlane",
 			"transform": {
 				"position": [
@@ -179,11 +207,11 @@
 				"position": [
 					0,
 					0,
-					-4
+					0
 				],
 				"rotation": [
-					85,
-					0,
+					60,
+					80,
 					0
 				]
 			},
@@ -195,33 +223,38 @@
 						1.0,
 						1.0
 					],
-					"type_name": "spot",
-					"cutoff": 45.0,
-					"exponent": 50.0
+					"type_name": "directional",
+					"cutoff": 15.0,
+					"exponent": 90.0
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"name": "Light2",
+			"name": "PointLight",
 			"transform": {
 				"position": [
+					-26,
 					5,
-					3,
-					1
+					53
+				],
+				"rotation": [
+					0,
+					0,
+					0
 				]
 			},
 			"components": [
 				{
 					"type": "LightComponent",
 					"color": [
-						0,
+						0.5,
 						1,
-						0
+						0.5
 					],
 					"type_name": "point",
-					"cutoff": 25.0,
-					"exponent": 10.0
+					"cutoff": 100.0,
+					"exponent": 0.0
 				}
 			]
 		},
@@ -238,13 +271,13 @@
 			"components": [
 				{
 					"type": "CameraComponent",
-					"fov": 45,
+					"fov": 75,
 					"near": 0.1,
 					"far": 100
 				},
 				{
 					"type": "CameraController",
-					"speed": 4
+					"speed": 8
 				}
 			]
 		}

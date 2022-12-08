@@ -215,5 +215,8 @@
     <None Include="..\Build\Assets\Materials\SnowPlane.mtrl">
       <Filter>Resource Files\Assets\Materials</Filter>
     </None>
+    <None Include="..\Build\Assets\Materials\DabbingAlien.mtrl">
+      <Filter>Resource Files\Assets\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

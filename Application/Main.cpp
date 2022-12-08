@@ -113,7 +113,7 @@ int main(int argc, char** argv)
 			actor->m_transform.rotation = math::EulerToQuaternion(rot);
 		}
 
-		actor = scene->GetActorFromName("UO");
+		actor = scene->GetActorFromName("PointLigt");
 		if (actor)
 		{
 			actor->m_transform.rotation = math::EulerToQuaternion(rot);
@@ -122,12 +122,6 @@ int main(int argc, char** argv)
 			actor->m_transform.position.z = posz;
 		}
 
-		actor = scene->GetActorFromName("Light");
-		if (actor)
-		{
-		// move light using sin wave
-			//actor->m_transform.position = pos;
-		}
 
 		auto program = neu::g_resources.Get<neu::Program>("shaders/fx/refraction.prog");
 		if (program)

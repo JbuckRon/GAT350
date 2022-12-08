@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Materials\box.mtrl" />
+    <None Include="..\Build\Assets\Materials\DabbingAlien.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
     <None Include="..\Build\Assets\Materials\ogre.mtrl" />
     <None Include="..\Build\Assets\Materials\postprocess.mtrl" />

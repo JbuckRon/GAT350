@@ -1,14 +1,15 @@
 {
-  "program": "shaders/lit/texture.prog",
+  "program": "shaders/lit/texture_normal.prog",
   "textures": [
-    "Textures/UFOTexture.png",
-    "Textures/UFOTexture_Normal.png",
-    "Textures/UFOTexture_Specular.png"
+    "Textures/NewestSnowTexture.png",
+    "Textures/SnowNormal.png",
+    "Textures/SnowPlaneTexture_Specular.png"
   ],
+  "uv_tiling": [ 25, 25 ],
   "color": [
-    0,
-    0,
-    0
+    1,
+    1,
+    1
   ],
-  "shininess": 35
+  "shininess": 25
 }
